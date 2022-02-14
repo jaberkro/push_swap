@@ -6,7 +6,7 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/14 18:13:28 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/14 18:30:29 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "$(RED)Done $(GREEN)COM$(YELLOW)PI$(BLUE)LING $(PINK)PUSH_SWAP$(RESET) :)"
 
 $(BNAME): $(BOBJ)
-	gcc $(FLAGS) $(BOBJ) -I $(INC) -o $(BNAME)
+	gcc $(FLAGS) $(BOBJ) $(LIBFT) -I $(INC) -o $(BNAME)
 	@echo "$(RED)Done $(GREEN)COM$(YELLOW)PI$(BLUE)LING $(PINK)CHECKER$(RESET) :)"
 
 %.o: %.c
