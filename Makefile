@@ -6,7 +6,7 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/14 15:38:30 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/14 15:46:14 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,14 @@ else
 all: $(NAME)
 endif
 
-$(NAME): $(SRC)
-	gcc -c $(FLAGS) $(SRC) -o $(NAME)
+$(NAME): $(OBJ)
+	gcc $(FLAGS) $(OBJ) -o $(NAME)
 
-$(BNAME): $(BSRC)
-	gcc -c $(FLAGS) $(BSRC) -o $(BNAME)
+$(BNAME): $(BOBJ)
+	gcc $(FLAGS) $(BOBJ) -o $(BNAME)
+
+%.o: %.c
+	gcc -c $(FLAGS) -o $@ $<
 
 bonus:
 	$(MAKE) WITH_BONUS=1 all
