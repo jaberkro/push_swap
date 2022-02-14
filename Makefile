@@ -6,7 +6,7 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/14 16:14:23 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/14 18:13:28 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ BOBJ = $(BSRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-INC = libft.h 
+INC = libft/libft.h
 LIBFT_DIR = libft/
 LIBFT = libft/libft.a
 
@@ -40,7 +40,7 @@ endif
 
 $(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) ./$(NAME)
-	gcc $(FLAGS) $(OBJ) -I $(INC) -o $(NAME)
+	gcc $(FLAGS) $(OBJ) $(LIBFT) -I $(INC) -o $(NAME)
 	@echo "$(RED)Done $(GREEN)COM$(YELLOW)PI$(BLUE)LING $(PINK)PUSH_SWAP$(RESET) :)"
 
 $(BNAME): $(BOBJ)
