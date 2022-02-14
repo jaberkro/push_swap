@@ -6,15 +6,17 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/14 15:36:20 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/14 15:38:30 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = ft_push_swap.c 
+SRC = ft_push_swap.c
+OBJ = $(SRC:.c=.o)
 
 BNAME = checker
 BSRC = ft_checker.c
+BOBJ = $(BSRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
