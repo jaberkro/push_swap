@@ -6,12 +6,13 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/14 18:30:29 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/24 23:30:09 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = ft_push_swap.c
+SRC = ft_dlstnew.c dlst_test.c ft_dlstadd_front.c ft_dlstadd_back.c \
+		ft_dlstrotate.c ft_dlstrev_rotate.c ft_dlstswap.c ft_dlstpush.c
 OBJ = $(SRC:.c=.o)
 
 BNAME = checker
@@ -40,7 +41,7 @@ endif
 
 $(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) ./$(NAME)
-	gcc $(FLAGS) $(OBJ) $(LIBFT) -I $(INC) -o $(NAME)
+	gcc $(FLAGS) $(OBJ) $(LIBFT) -I $(INC) -o $(NAME) -fsanitize=address
 	@echo "$(RED)Done $(GREEN)COM$(YELLOW)PI$(BLUE)LING $(PINK)PUSH_SWAP$(RESET) :)"
 
 $(BNAME): $(BOBJ)
