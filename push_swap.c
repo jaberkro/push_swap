@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/24 17:28:28 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/24 23:43:41 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,13 @@
 // 	while (i)
 // }
 
-int	check_and_convert_input(char *inputstring)
+int	check_and_convert_input(char **separated_inputs)
 {
-	char	**separated_inputs;
 	int		*inputs;
 	int		len;
 	int		i;
 
 	len = 0;
-	separated_inputs = ft_split(inputstring, ' ');
 	while (separated_inputs[len] != '\0')
 	{
 		i = 0;
@@ -97,9 +95,10 @@ int	check_and_convert_input(char *inputstring)
 
 // }
 
-int	read_input(int argc, char **argv)//, t_double_list *stack_a) // parsing 
+int	parse_input(int argc, char **argv)//, t_double_list *stack_a) // parsing 
 {
 	char	*inputstring;
+	char	**separated_inputs;
 	int		i;
 
 	i = 1;
@@ -110,8 +109,8 @@ int	read_input(int argc, char **argv)//, t_double_list *stack_a) // parsing
 		inputstring = ft_strjoin(inputstring, " ");
 		i++;
 	}
-	return (check_and_convert_input(inputstring));//, stack_a));
-	
+	separated_inputs = ft_split(inputstring, ' ');
+	return (check_and_convert_input(separated_inputs));//, stack_a));	
 }
 
 int main(int argc, char **argv)
@@ -121,7 +120,7 @@ int main(int argc, char **argv)
 	
 	if (argc == 1)
 	 	return (0);
-	error = read_input(argc, argv);//, &stack_a); // error_handling
+	error = parse_input(argc, argv);//, &stack_a); // error_handling
 	if (error == 0)
 	{
 		write(1, "Error\n", 6);
