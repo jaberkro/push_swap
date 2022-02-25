@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
+/*   ft_atol.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/22 19:32:16 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/25 13:48:04 by jaberkro      ########   odam.nl         */
+/*   Created: 2022/02/25 13:46:53 by jaberkro      #+#    #+#                 */
+/*   Updated: 2022/02/25 13:48:21 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	sign;
-	int	out;
-	int	counter;
+	int		sign;
+	long	out;
+	long	counter;
 
 	sign = 1;
 	out = 0;
@@ -37,6 +37,6 @@ int	ft_atoi(const char *str)
 	return (out * sign);
 }
 
-/* The atoi() function converts the initial portion of the string pointed to
-     by str to int representation.
+/* The atol() function converts the initial portion of the string pointed to
+     by str to long representation.
  */
