@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/25 13:29:55 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/25 13:52:49 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,34 @@
 // 	while (i)
 // }
 
-int	check_and_convert_input(char **separated_inputs)
-{
-	int		*inputs;
-	int		len;
-	int		i;
+// int	check_and_convert_input(char **separated_inputs)
+// {
+// 	int		*inputs;
+// 	int		len;
+// 	int		i;
 
-	len = 0;
-	while (separated_inputs[len] != '\0')
-	{
-		i = 0;
-		while (separated_inputs[len][i])
-		{
-			if (ft_isdigit(separated_inputs[len][i]) == 0 && separated_inputs[len][i] != '-' && separated_inputs[len][i] != '+')
- 				return (0);
-			i++;
-		}
-		len++;
-	}
-	inputs = malloc(4 * len);
-	if (inputs == NULL)
-		return (0);
-	while (len > 0)
-	{
-		inputs[len - 1] = ft_atoi(separated_inputs[len - 1]);
-		len--;
-	}
-	return (1);
-}
+// 	len = 0;
+// 	while (separated_inputs[len] != '\0')
+// 	{
+// 		i = 0;
+// 		while (separated_inputs[len][i])
+// 		{
+// 			if (ft_isdigit(separated_inputs[len][i]) == 0 && separated_inputs[len][i] != '-' && separated_inputs[len][i] != '+')
+//  				return (0);
+// 			i++;
+// 		}
+// 		len++;
+// 	}
+// 	inputs = malloc(4 * len);
+// 	if (inputs == NULL)
+// 		return (0);
+// 	while (len > 0)
+// 	{
+// 		inputs[len - 1] = ft_atoi(separated_inputs[len - 1]);
+// 		len--;
+// 	}
+// 	return (1);
+// }
 
 // int	*read_input(int argc, char **argv)
 // {
@@ -96,27 +96,30 @@ int	check_and_convert_input(char **separated_inputs)
 
 // }
 
-int	*index_array(int *input_array)
+int	*index_array(int *input_array, int *output_array)
 {
-	int	*output_array;
-
+	
 	return (output_array);
 }
 
 t_dlist	*make_stack(char **separated_inputs, int i)
 {
 	int		*input_array;
+	long	value;
 	t_dlist	*stack_a;
 
-	input_array = malloc (4 * i);
+	input_array = malloc (sizeof(int *) * i);
 	if (input_array == NULL)
 		return (NULL);
 	while (i > 0)
 	{
-		input_array[i - 1] = ft_atoi(separated_inputs[i - 1]);
+		value = ft_atol(separated_inputs[i - 1]);
+		if (value < -2147483648 || value > 2147483647)
+			return (NULL) 
+		input_array[i - 1] = (int)value; 
 		i--;
 	}
-	input_array = index_array(input_array);
+	input_array = index_array(input_array, input_array);
 	return (stack_a);
 }
 
@@ -186,7 +189,7 @@ Parse the input
 - Check every part and count how much we should malloc for the array
 - Malloc the array
 - Use atoi to fill the array
-- Make a similar array that counts from 1 to the highest number in the array
+- Make a similar array that counts from 1 to the highest number in the array // index it
 - Put the array inputs in a stack
 - Return the stack
 */
