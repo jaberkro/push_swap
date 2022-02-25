@@ -6,12 +6,13 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/24 23:43:41 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/25 13:29:55 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft/libft.h"
+#include "push_swap.h"
 
 // int	error_check(char **inputs)
 // {
@@ -95,11 +96,56 @@ int	check_and_convert_input(char **separated_inputs)
 
 // }
 
-int	parse_input(int argc, char **argv)//, t_double_list *stack_a) // parsing 
+int	*index_array(int *input_array)
 {
+	int	*output_array;
+
+	return (output_array);
+}
+
+t_dlist	*make_stack(char **separated_inputs, int i)
+{
+	int		*input_array;
+	t_dlist	*stack_a;
+
+	input_array = malloc (4 * i);
+	if (input_array == NULL)
+		return (NULL);
+	while (i > 0)
+	{
+		input_array[i - 1] = ft_atoi(separated_inputs[i - 1]);
+		i--;
+	}
+	input_array = index_array(input_array);
+	return (stack_a);
+}
+
+int	error_check_and_array_len(char **separated_inputs)
+{
+	int	i;
+	int	len;
+
+	len = 0;
+	while (separated_inputs[len] != '\0')
+	{
+		i = 0;
+		while (separated_inputs[len][i])
+		{
+			if (i != 0 && ft_isdigit(separated_inputs[len][i]) == 0)
+				return (0);
+			i++;
+		}
+		len++;
+	}
+	return (len);
+}
+
+t_dlist	*parse_input(int argc, char **argv)
+{
+	int		i;
 	char	*inputstring;
 	char	**separated_inputs;
-	int		i;
+	t_dlist	*stack_a;
 
 	i = 1;
 	inputstring = ft_calloc(1, '\0');
@@ -110,24 +156,43 @@ int	parse_input(int argc, char **argv)//, t_double_list *stack_a) // parsing
 		i++;
 	}
 	separated_inputs = ft_split(inputstring, ' ');
-	return (check_and_convert_input(separated_inputs));//, stack_a));	
+	i = error_check_and_array_len(separated_inputs);
+	//free (inputstring);
+	if (i == 0)
+		//free separated_inputs (nested array)
+		return (NULL);
+	return(make_stack(separated_inputs, i));
 }
 
 int main(int argc, char **argv)
 {
-	//t_double_list 	stack_a;
-	int				error;
+	t_dlist 	*stack_a;
 	
 	if (argc == 1)
 	 	return (0);
-	error = parse_input(argc, argv);//, &stack_a); // error_handling
-	if (error == 0)
+	stack_a = parse_input(argc, argv);
+	if (stack_a == NULL)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
 	return (0);
 }
+
+/*
+Parse the input
+- Make it all one string
+- Use split to make separate parts
+- Check every part and count how much we should malloc for the array
+- Malloc the array
+- Use atoi to fill the array
+- Make a similar array that counts from 1 to the highest number in the array
+- Put the array inputs in a stack
+- Return the stack
+*/
+
+
+
 	// int		len;
 	// int		*inputs;
 	
