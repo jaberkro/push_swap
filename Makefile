@@ -6,20 +6,21 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/24 23:30:09 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/25 18:48:18 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = ft_dlstnew.c dlst_test.c ft_dlstadd_front.c ft_dlstadd_back.c \
-		ft_dlstrotate.c ft_dlstrev_rotate.c ft_dlstswap.c ft_dlstpush.c
+SRC = push_swap.c ft_dlstnew.c ft_dlstadd_front.c ft_dlstadd_back.c \
+		ft_dlstrotate.c ft_dlstrev_rotate.c ft_dlstswap.c ft_dlstpush.c \
+		ft_dlstclear.c
 OBJ = $(SRC:.c=.o)
 
 BNAME = checker
 BSRC = ft_checker.c
 BOBJ = $(BSRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 INC = libft/libft.h
 LIBFT_DIR = libft/
@@ -41,7 +42,7 @@ endif
 
 $(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) ./$(NAME)
-	gcc $(FLAGS) $(OBJ) $(LIBFT) -I $(INC) -o $(NAME) -fsanitize=address
+	gcc $(FLAGS) $(OBJ) $(LIBFT) -I $(INC) -o $(NAME)
 	@echo "$(RED)Done $(GREEN)COM$(YELLOW)PI$(BLUE)LING $(PINK)PUSH_SWAP$(RESET) :)"
 
 $(BNAME): $(BOBJ)
