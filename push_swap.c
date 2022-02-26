@@ -6,120 +6,120 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/25 13:52:49 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/26 16:17:55 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft/libft.h"
 #include "push_swap.h"
+#include <stdio.h>
 
-// int	error_check(char **inputs)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i)
-// }
-
-// int	check_and_convert_input(char **separated_inputs)
-// {
-// 	int		*inputs;
-// 	int		len;
-// 	int		i;
-
-// 	len = 0;
-// 	while (separated_inputs[len] != '\0')
-// 	{
-// 		i = 0;
-// 		while (separated_inputs[len][i])
-// 		{
-// 			if (ft_isdigit(separated_inputs[len][i]) == 0 && separated_inputs[len][i] != '-' && separated_inputs[len][i] != '+')
-//  				return (0);
-// 			i++;
-// 		}
-// 		len++;
-// 	}
-// 	inputs = malloc(4 * len);
-// 	if (inputs == NULL)
-// 		return (0);
-// 	while (len > 0)
-// 	{
-// 		inputs[len - 1] = ft_atoi(separated_inputs[len - 1]);
-// 		len--;
-// 	}
-// 	return (1);
-// }
-
-// int	*read_input(int argc, char **argv)
-// {
-// 	char	*inputstring;
-// 	int		*inputs;
-// 	int		i;
-
-// 	i = 1;
-// 	inputstring = ft_calloc(1, '\0');
-// 	while (i < argc)
-// 	{
-// 		inputstring = ft_strjoin(inputstring, argv[i]);
-// 		inputstring = ft_strjoin(inputstring, " ");
-// 		i++;
-// 	}
-// 	inputs = check_and_convert_input(inputstring);
-// 	free(inputstring);
-// 	return (inputs);
-// }
-
-// int	check_and_convert_input(char *inputstring)//, t_double_list *stack_a)
-// {
-// 	char			to_convert[20];
-// 	//unsigned int	converted;
-// 	size_t			i;
-// 	size_t			j;
-
-// 	i = 0;
-// 	while(i < ft_strlen(inputstring))
-// 	{
-// 		j = 0;
-// 		while (inputstring[i] != ' ')
-// 		{
-// 			if (ft_isdigit(inputstring[i]) == 0 && inputstring[i] != '-' && inputstring[i] != '+')
-// 				return (0);
-// 			to_convert[j] = inputstring[i];
-// 			i++;
-// 			j++;
-// 		}
-// 		to_convert[0]  = '\0';
-// 		i++;
-// 	}
-// 	return (1);
-
-// }
-
-int	*index_array(int *input_array, int *output_array)
+void	print_list(t_dlist *to_print)
 {
-	
+	while (to_print)
+	{
+		ft_printf("<%d>", to_print->content);
+		to_print = to_print->next;
+	}
+	ft_printf("\n");
+}
+
+t_dlist *make_stack(long *input_array, int len)
+{
+	t_dlist *stack_a;
+	t_dlist *new;
+
+	stack_a = ft_dlstnew((int)input_array[len - 1]);
+	len--;
+	while (len - 1 >= 0)
+	{
+		new = ft_dlstnew((int)input_array[len - 1]);
+		if (new == NULL)
+		{
+			free (input_array);
+			ft_dlstclear(&stack_a);
+			return (NULL);
+		}
+		ft_dlstadd_front(&stack_a, new);
+		len--;
+	}
+	return(stack_a);
+}
+
+long	*index_array(long *input_array, int len)
+{
+	int		i;
+	int		val;
+	long	lowest_value;
+	long	lowest_loc;
+	long	last_lowest;
+	long	*output_array;
+
+	output_array = malloc (sizeof(long *) * len);
+	if (output_array == NULL)
+	{
+		free(input_array);
+		return (NULL);
+	}
+	val = 1;
+	last_lowest = -2147483649;
+	while (val < len + 1)
+	{	
+		i = 0;
+		lowest_value = 2147483648;
+		lowest_loc = -1;
+		while (i < len)
+		{
+			if (input_array[i] < lowest_value)
+			{
+				lowest_value = input_array[i];
+				lowest_loc = i;
+			}
+			i++;
+		}
+		if (lowest_value == last_lowest)
+		{
+			free(output_array);
+			free(input_array);
+			return (NULL);
+		}
+		last_lowest = lowest_value;
+		output_array[lowest_loc] = val;
+		input_array[lowest_loc] = 2147483648;
+		val++;
+	}
+	free(input_array);
 	return (output_array);
 }
 
-t_dlist	*make_stack(char **separated_inputs, int i)
+t_dlist	*make_array(char **separated_inputs, int len)
 {
-	int		*input_array;
+	long	*input_array;
 	long	value;
+	int		i;
 	t_dlist	*stack_a;
 
-	input_array = malloc (sizeof(int *) * i);
+	i = len;
+	input_array = malloc (sizeof(long *) * i);
 	if (input_array == NULL)
 		return (NULL);
 	while (i > 0)
 	{
 		value = ft_atol(separated_inputs[i - 1]);
 		if (value < -2147483648 || value > 2147483647)
-			return (NULL) 
-		input_array[i - 1] = (int)value; 
+		{
+			free(input_array);
+			return (NULL);
+		}
+		input_array[i - 1] = value; 
 		i--;
 	}
-	input_array = index_array(input_array, input_array);
+	input_array = index_array(input_array, len);
+	if (input_array == NULL)
+		return (NULL);
+	stack_a = make_stack(input_array, len);
+	free(input_array);
 	return (stack_a);
 }
 
@@ -134,7 +134,9 @@ int	error_check_and_array_len(char **separated_inputs)
 		i = 0;
 		while (separated_inputs[len][i])
 		{
-			if (i != 0 && ft_isdigit(separated_inputs[len][i]) == 0)
+			if (ft_isdigit(separated_inputs[len][i]) == 0 && (i != 0 || \
+				(i == 0 && separated_inputs[len][i] != '-' && \
+				separated_inputs[len][i] != '+')))
 				return (0);
 			i++;
 		}
@@ -148,28 +150,53 @@ t_dlist	*parse_input(int argc, char **argv)
 	int		i;
 	char	*inputstring;
 	char	**separated_inputs;
+	char	*tmp;
 	t_dlist	*stack_a;
 
 	i = 1;
-	inputstring = ft_calloc(1, '\0');
+	inputstring = ft_calloc(1, 1);
 	while (i < argc)
 	{
+		tmp = inputstring;
 		inputstring = ft_strjoin(inputstring, argv[i]);
+		if (tmp)
+			free(tmp);
+		if (inputstring == NULL)
+			return (NULL);
+		tmp = inputstring;
 		inputstring = ft_strjoin(inputstring, " ");
+		if (inputstring == NULL)
+			return (NULL);
+		if (tmp)
+			free(tmp);
 		i++;
 	}
 	separated_inputs = ft_split(inputstring, ' ');
 	i = error_check_and_array_len(separated_inputs);
-	//free (inputstring);
+	free (inputstring);
 	if (i == 0)
-		//free separated_inputs (nested array)
+	{
+		while (separated_inputs[i])
+		{
+			free(separated_inputs[i]);
+			i++;
+		}
+		free(separated_inputs);
 		return (NULL);
-	return(make_stack(separated_inputs, i));
+	}
+	stack_a = make_array(separated_inputs, i);
+	while (i > 0)
+	{
+		free(separated_inputs[i - 1]);
+		i--;
+	}
+	free (separated_inputs);
+	return (stack_a);
 }
 
 int main(int argc, char **argv)
 {
-	t_dlist 	*stack_a;
+	t_dlist *stack_a;
 	
 	if (argc == 1)
 	 	return (0);
@@ -179,6 +206,9 @@ int main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (1);
 	}
+	print_list(stack_a);
+	ft_dlstclear(&stack_a);
+	system("leaks push_swap");
 	return (0);
 }
 
@@ -193,38 +223,3 @@ Parse the input
 - Put the array inputs in a stack
 - Return the stack
 */
-
-
-
-	// int		len;
-	// int		*inputs;
-	
-	// len = 0;
-	// if (argc == 1)
-	// 	return (0);
-	// write(1, "hi from push_swap\n", 18);
-	// inputs = read_input(argc, argv);
-	// if (inputs == NULL)
-	// 	return (0);
-
-	// int i = 0;
-	// while (inputs[i])
-	// {
-	// 	ft_printf("<%d>\n", inputs[i]);
-	// 	i++;
-	// }
-	//ft_printf("<%d>\n", inputs[2]);
-	//ft_printf("<%d>\n", inputs[3]);
-	// if (!error_check(inputs))
-	// {
-	// 	free(inputs);
-	// 	write(1, "Error\n", 6);
-	// 	return (1);
-	// }
-
-
-// atoi
-// arr = MAX_LONG MAX_LONG MAX_LONG MAX_LONG smallest = 10
-// arr2 = 2   3  1 4 bigest = 4 --> length of my list
-// lst = 2->3->1->4
-// out = 
