@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/24 21:22:00 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/25 18:46:24 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	ft_dlstrotate(t_dlist **dlst);
 void	ft_dlstrev_rotate(t_dlist **dlst);
 void    ft_dlstswap(t_dlist **dlst);
 void    ft_dlstpush(t_dlist **dlst1, t_dlist **dlst2);
+void    ft_dlstclear(t_dlist **dlst);
 
 #endif
