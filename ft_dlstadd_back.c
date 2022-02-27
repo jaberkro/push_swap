@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:55:19 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/24 17:03:40 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/27 18:03:24 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_dlstadd_back(t_dlist **dlst, t_dlist *new)
 		tmp = *dlst;
 		while (tmp->next != NULL)
 			tmp = tmp->next;
-        new->previous = tmp;
+		new->previous = tmp;
 		tmp->next = new;
 	}
 }
 
-/* Adds the element ’new’ at the end of the list.
+/* Adds the element ’new’ at the end of the doubly linked list.
  */
