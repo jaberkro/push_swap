@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_dlstclear.c                                     :+:    :+:            */
+/*   ft_dlstlen.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/02/25 18:37:48 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/28 17:15:04 by jaberkro      ########   odam.nl         */
+/*   Created: 2022/02/28 12:07:02 by jaberkro      #+#    #+#                 */
+/*   Updated: 2022/02/28 12:11:10 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_dlstclear(t_dlist **dlst)
+int ft_dlstlen(t_dlist *to_check)
 {
-	t_dlist	*tmp;
+    int i;
 
-	if (!dlst)
-		return ;
-	while ((*dlst)->previous)
-		*dlst = (*dlst)->previous;
-	while (*dlst)
-	{
-		tmp = *dlst;
-		*dlst = (*dlst)->next;
-		free(tmp);
-	}
+    i = 0;
+    while (to_check)
+    {
+        to_check = to_check->next;
+        i++;
+    }
+    return (i);
 }
+
+/*
+    count the length of a doubly linked list
+*/
