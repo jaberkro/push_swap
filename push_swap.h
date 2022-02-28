@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/25 18:46:24 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/28 17:03:30 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "libft/libft.h"
 
 typedef struct s_dlist
 {
@@ -30,6 +31,8 @@ void	ft_dlstrotate(t_dlist **dlst);
 void	ft_dlstrev_rotate(t_dlist **dlst);
 void    ft_dlstswap(t_dlist **dlst);
 void    ft_dlstpush(t_dlist **dlst1, t_dlist **dlst2);
-void    ft_dlstclear(t_dlist **dlst);
+int		ft_dlstclear(t_dlist **dlst);
+int		ft_dlstlen(t_dlist *to_check);
+int		ft_dlstindex_lowest(t_dlist **dlst, int value);
 
 #endif

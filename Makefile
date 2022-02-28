@@ -6,14 +6,14 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/02/25 18:48:18 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/02/28 17:03:20 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = push_swap.c ft_dlstnew.c ft_dlstadd_front.c ft_dlstadd_back.c \
-		ft_dlstrotate.c ft_dlstrev_rotate.c ft_dlstswap.c ft_dlstpush.c \
-		ft_dlstclear.c
+SRC = ft_dlstnew.c ft_dlstadd_front.c ft_dlstadd_back.c ft_dlstrotate.c \
+	ft_dlstrev_rotate.c ft_dlstswap.c ft_dlstpush.c ft_dlstclear.c \
+	ft_dlstlen.c ft_dlstindex_lowest.c push_swap.c parsing.c
 OBJ = $(SRC:.c=.o)
 
 BNAME = checker

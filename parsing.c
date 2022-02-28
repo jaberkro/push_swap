@@ -6,24 +6,52 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/27 19:12:34 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/27 20:12:04 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/28 17:01:48 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
-void	print_list(t_dlist *to_print)
+static int	free_nested_array(char **to_free)
 {
-	while (to_print)
+	int	i;
+
+	i = 0;
+	while (to_free[i])
 	{
-		ft_printf("<%d>", to_print->content);
-		to_print = to_print->next;
+		free(to_free[i]);
+		i++;
 	}
-	ft_printf("\n");
+	free(to_free);
+	return (0);
 }
 
-int	error_check_and_make_dlist(char *input, t_dlist **stack_a)
+static int	index_dlist(t_dlist **stack_a)
+{
+	int	value;
+	int	i;
+
+	i = ft_dlstlen(*stack_a);
+	value = -2147483648;
+	while (i > 0)
+	{
+		value = ft_dlstindex_lowest(stack_a, value);
+		if (value == 0)
+			return (0);
+		i--;
+	}
+	while ((*stack_a)->next)
+	{
+		(*stack_a)->content += 2147483649;
+		*stack_a = (*stack_a)->next;
+	}
+	(*stack_a)->content += 2147483649;
+	while ((*stack_a)->previous)
+		*stack_a = (*stack_a)->previous;
+	return (1);
+}
+
+static int	error_check_and_make_dlist(char *input, t_dlist **stack_a)
 {
 	int		i;
 	long	value;
@@ -42,10 +70,7 @@ int	error_check_and_make_dlist(char *input, t_dlist **stack_a)
 		return (0);
 	new_element = ft_dlstnew((int)value);
 	if (new_element == NULL)
-	{
-		ft_dlstclear(stack_a);
-		return (0);
-	}
+		return (ft_dlstclear(stack_a));
 	ft_dlstadd_back(stack_a, new_element);
 	return (1);
 }
@@ -62,30 +87,17 @@ int	parse_input(int argc, char **argv, t_dlist **stack_a)
 		j = 0;
 		input = ft_split(argv[i], ' ');
 		if (input[0] == NULL)
-			return (0);
+			return (free_nested_array(input));
 		while (input[j])
 		{
 			if (error_check_and_make_dlist(input[j], stack_a) == 0)
-				return (0);
-			free(input[j]);
+				return (free_nested_array(input));
 			j++;
 		}
-		free(input);
+		free_nested_array(input);
 		i++;
 	}
-	return (1);
-}
-
-int	main(int argc, char**argv)
-{
-	t_dlist	*stack_a;
-
-	if (argc == 1)
+	if (index_dlist(stack_a) == 0)
 		return (0);
-	if (parse_input(argc, argv, &stack_a) == 0)
-		return (write(1, "Error\n", 6));
-	print_list(stack_a);
-	ft_dlstclear(&stack_a);
-	system("leaks push_swap");
-	return (0);
+	return (1);
 }
