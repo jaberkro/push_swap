@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 20:50:56 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/27 18:10:36 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/28 19:45:31 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,17 @@ void	ft_dlstpush(t_dlist **dlst1, t_dlist **dlst2)
 	t_dlist	*tmp;
 
 	tmp = (*dlst2)->next;
-	if ((*dlst2)->content)
+	if (!*dlst1 && !*dlst2)
+		return ;
+	else if (!*dlst1)
+	{
+		*dlst1 = ft_dlstnew((*dlst2)->content);
+		(*dlst1)->next = NULL;
+		tmp->previous = NULL;
+		free(*dlst2);
+		*dlst2 = tmp;
+	}
+	else
 	{
 		(*dlst1)->previous = *dlst2;
 		(*dlst1)->previous->next = *dlst1;

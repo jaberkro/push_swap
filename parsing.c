@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/27 19:12:34 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/28 17:01:48 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/02/28 18:12:49 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	error_check_and_make_dlist(char *input, t_dlist **stack_a)
 		return (0);
 	new_element = ft_dlstnew((int)value);
 	if (new_element == NULL)
-		return (ft_dlstclear(stack_a));
+		return (0);
 	ft_dlstadd_back(stack_a, new_element);
 	return (1);
 }
