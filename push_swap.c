@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/02/28 19:45:10 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/03 17:44:24 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	print_dlist(t_dlist *to_print)
 	ft_printf("\n");
 }
 
-int check_sorted(t_dlist *stack, int ascending)
+int	check_sorted(t_dlist *stack, int ascending)
 {
 	int	last;
 
 	last = stack->content;
 	if (ascending == 1)
 		last = 0;
-	else 
+	else
 		last = 2147483647;
 	while (stack)
 	{
 		if ((ascending == 1 && stack->content > last) || \
-			(ascending == 0 && stack->content < last ))
+			(ascending == 0 && stack->content < last))
 			last = stack->content;
 		else
 			return (0);
@@ -138,4 +138,3 @@ int	main(int argc, char**argv)
 	system("leaks push_swap");
 	return (0);
 }
-
