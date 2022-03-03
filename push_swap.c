@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/03 17:44:24 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/03 22:53:52 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ int	check_sorted(t_dlist *stack, int ascending)
 	return (1);
 }
 
-void	bucket_sort(t_dlist **stack_a, int ascending)
+
+
+t_dlist	*bucket_sort(t_dlist *stack_a, int ascending)
 {
 	int		len;
 	int		i;
 	t_dlist	*stack_b;
 
 	i = 0;
-	len = ft_dlstlen(*stack_a);
+	len = ft_dlstlen(stack_a);
+	stack_b = NULL;
 	// if (len < 2)
 	// 	return ;
 	// if (len == 2)
@@ -81,31 +84,61 @@ void	bucket_sort(t_dlist **stack_a, int ascending)
 	// }
 	// else
 	// {
-		if (check_sorted(*stack_a, ascending) == 0)
+		if (check_sorted(stack_a, ascending) == 0)
 		{
+			if (len == 1)
+				return (stack_a);
+			else if (len == 2)
+			{
+				if (ascending == 1 && stack_a->content > stack_a->next->content)
+				{
+					ft_printf("sa\n");
+					ft_dlstswap(&stack_a);
+					print_dlist(stack_a);
+					//print_dlist(stack_b);
+				}
+				if (ascending == 0 && stack_a->content < stack_a->next->content)
+				{
+					ft_printf("sa\n");
+					ft_dlstswap(&stack_a);
+					print_dlist(stack_a);
+					//print_dlist(stack_b);
+				}
+				return (stack_a);
+			}
 			ft_printf("sorted: not yet.\n");
 			while (i < len)
 			{
-				print_dlist(*stack_a);
-				print_dlist(stack_b);
-				ft_printf("content:%d rule: ", (*stack_a)->content);
-				if ((*stack_a)->content > len / 2)
+				if (stack_a->content <= len / 2)
 				{
 					ft_printf("pb\n");
-					ft_dlstpush(&stack_b, stack_a);
+					ft_dlstpush(&stack_b, &stack_a);
 				}
 				else
 				{
 					ft_printf("ra\n");
-					ft_dlstrotate(stack_a);
+					ft_dlstrotate(&stack_a);
 				}
+				print_dlist(stack_a);
+				print_dlist(stack_b);
 				i++;
 			}
+			bucket_sort(stack_a, 1);
+			bucket_sort(stack_b, 0);
+			while (stack_b)
+			{
+				ft_printf("pa\n");
+				ft_dlstpush(&stack_a, &stack_b);
+				print_dlist(stack_a);
+				print_dlist(stack_b);
+			}
+			return (stack_a);
 		}
 		else
 		{
 			ft_printf("sorted: yes!\n");
-			return ;
+			print_dlist(stack_a);
+			return (stack_a);
 		}
 		// bucket_sort(stack_a, 1);
 		// bucket_sort(&stack_b, 0);
@@ -121,6 +154,7 @@ void	bucket_sort(t_dlist **stack_a, int ascending)
 int	main(int argc, char**argv)
 {
 	t_dlist	*stack_a;
+	t_dlist	*tmp;
 
 	if (argc == 1)
 		return (0);
@@ -132,9 +166,10 @@ int	main(int argc, char**argv)
 	}
 	print_dlist(stack_a);
 	ft_printf("[%d]\n", ft_dlstlen(stack_a));
-	bucket_sort(&stack_a, 1);
+	tmp = bucket_sort(stack_a, 1);
+	stack_a = tmp;
 	print_dlist(stack_a);
 	ft_dlstclear(&stack_a);
-	system("leaks push_swap");
+	//system("leaks push_swap");
 	return (0);
 }
