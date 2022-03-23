@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 20:52:48 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/23 21:31:16 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/23 21:44:59 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b)
 		while ((*stack_b)->val > (*stack_a)->val)
 			ps_ra(stack_a);
 	}
-	else if ((*stack_b)->val < (*stack_a)->val && (*stack_b)->val < ft_dlstlast(*stack_a)->val && (*stack_a)->val - (*stack_b)->val > ft_dlstlast(*stack_a)->val - (*stack_b)->val)
+	else if ((*stack_b)->val < (*stack_a)->val && (*stack_b)->val < \
+	ft_dlstlast(*stack_a)->val && (*stack_a)->val - (*stack_b)->val > \
+	ft_dlstlast(*stack_a)->val - (*stack_b)->val)
 	{
-		while ((*stack_b)->val < (*stack_a)->val && (*stack_b)->val < ft_dlstlast(*stack_a)->val && (*stack_a)->val - (*stack_b)->val > ft_dlstlast(*stack_a)->val - (*stack_b)->val)
-		{
-			//print_dlist(*stack_a);
+		while ((*stack_b)->val < (*stack_a)->val && (*stack_b)->val < \
+		ft_dlstlast(*stack_a)->val && (*stack_a)->val - (*stack_b)->val > \
+		ft_dlstlast(*stack_a)->val - (*stack_b)->val)
 			ps_rra(stack_a);
-		}
 	}
 	ps_pa(stack_a, stack_b);
 	return ;
