@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/21 20:43:39 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/23 20:50:37 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ int	check_sorted(t_dlist *stack, int ascending)
 	return (1);
 }
 
-int	check_sorted_part(t_dlist *stack, int ascending, int len)
+int	check_sorted_rotated(t_dlist *stack, int ascending, int len)
 {
 	int	last;
+	int start;
 	int	i;
 
 	i = 0;
+	print_dlist(stack);
+	start = stack->val;
 	if (ascending == 1)
 		last = 0;
 	else
@@ -58,13 +61,23 @@ int	check_sorted_part(t_dlist *stack, int ascending, int len)
 	while (i < len)
 	{
 		if ((ascending == 1 && stack->val > last) || \
-			(ascending == 0 && stack->val < last))
+			(ascending == 0 && stack->val < last) || \
+			(ascending == 1 && stack->val < last && last == len) || \
+			(ascending == 0 && stack->val > last && last == 0))
 			last = stack->val;
 		else
+		{
+			//ft_printf("no! not sorted: ");
+			//print_dlist(stack);
 			return (0);
+		}
 		stack = stack->next;
 		i++;
 	}
+	if (last > start)
+		return (0);
+	ft_printf("yes! sorted: ");
+	print_dlist(stack);
 	return (1);
 }
 

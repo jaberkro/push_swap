@@ -98,41 +98,48 @@ static void	bucket_two_three(t_dlist **stack_a, t_dlist **stack_b, int len)
 void	bucket_sort(t_dlist **stack_a)
 {
 	int		len;
-	int		i;
+	//int		i;
 	t_dlist	*stack_b = NULL;
 
 	len = ft_dlstlen(*stack_a);
-	//ft_printf("len:%d\n", len);
+	//amount = len / 5;
 	bucket_two_three(stack_a, &stack_b, len);
+	bucket_one_four(stack_a, &stack_b, len);
+	// i = 0;
+	// while (i < amount)
+	// {
+	// 	bucket_next_two(stack_a, &stack_b, len, i);
+	// 	i += 5;
+	// }
 	//f//t_printf("a: ");
 	//print_dlist(*stack_a);
 	//ft_printf("b: ");
 	//print_dlist(stack_b);
-	bucket_one_four(stack_a, &stack_b, len);
 	//ft_printf("b: ");
 	//print_dlist(stack_b);
 	//insertion_sort(stack_a, len / 5);
 	//ft_printf("a: ");
 	bubble_sort(stack_a, 1);
-	print_dlist(*stack_a);
+	//print_dlist(*stack_a);
 	while (stack_b && stack_b->val)
 	{
-		i = 0;
-		while (i < len / 5)
-		{
-			ps_pa(stack_a, &stack_b);
-			i++;
-		}
-		print_dlist(*stack_a);
-		bubble_sort(stack_a, 1);
-		//insertion_sort(stack_a, len / 5);
-		print_dlist(*stack_a);
+		// i = 0;
+		// while (i < len / 5)
+		// {
+			//ps_pa(stack_a, &stack_b);
+			//print_dlist(*stack_a);
+			//insertion_sort(stack_a, len);
+			insertion_sort_advanced(stack_a, &stack_b);
+		// 	i++;
+		// }
+		//bubble_sort(stack_a, 1);
+		//print_dlist(*stack_a);
 		// while (i + 1 > 0)
 		// {
 		// 	ps_ra(stack_a);
 		// 	i--;
 		// }
-		print_dlist(*stack_a);
+		//print_dlist(*stack_a);
 	}
 }
 
