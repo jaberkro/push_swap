@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/21 14:26:19 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/21 20:43:39 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,29 @@ int	check_sorted(t_dlist *stack, int ascending)
 		else
 			return (0);
 		stack = stack->next;
+	}
+	return (1);
+}
+
+int	check_sorted_part(t_dlist *stack, int ascending, int len)
+{
+	int	last;
+	int	i;
+
+	i = 0;
+	if (ascending == 1)
+		last = 0;
+	else
+		last = 2147483647;
+	while (i < len)
+	{
+		if ((ascending == 1 && stack->val > last) || \
+			(ascending == 0 && stack->val < last))
+			last = stack->val;
+		else
+			return (0);
+		stack = stack->next;
+		i++;
 	}
 	return (1);
 }
@@ -134,8 +157,11 @@ int	main(int argc, char**argv)
 	}
 	print_dlist(stack_a);
 	ft_printf("[%d]\n", ft_dlstlen(stack_a));
-	//tmp1 = bubble_sort(stack_a, 1);
-	smallest_sort(&stack_a, 1);
+	if (ft_dlstlen(stack_a) <= 6)
+		smallest_sort(&stack_a, 1);
+	else 
+		bucket_sort(&stack_a);
+		//bubble_sort(&stack_a, 1);
 	//ft_printf("bubble sort done. Starting quick sort now\n");
 	//quick_sort(&stack_a, 1, ft_dlstlen(stack_a));
 	//stack_a = tmp1;

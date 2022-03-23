@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/05 11:16:37 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/21 15:16:25 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/21 19:56:34 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void	ps_rb(t_dlist **stack)
 void	ps_rra(t_dlist **stack)
 {
 	ft_printf("rra\n");
+	ft_dlstrev_rotate(stack);
+}
+
+void	ps_rrb(t_dlist **stack)
+{
+	ft_printf("rrb\n");
 	ft_dlstrev_rotate(stack);
 }
 
