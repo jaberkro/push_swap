@@ -143,48 +143,17 @@ void	bucket_sort(t_dlist **stack_a)
 		amount = 7;
 	else 
 		amount = 25;
-	// bucket_two_three(stack_a, &stack_b, len);
-	// bucket_one_four(stack_a, &stack_b, len);
 	i = 0;
 	while (i < amount / 2)
 	{
 		bucket_next_two(stack_a, &stack_b, len, i);
 		i++;
 	}
-	//f//t_printf("a: ");
-	//print_dlist(*stack_a);
-	//ft_printf("b: ");
-	//print_dlist(stack_b);
-	//ft_printf("b: ");
-	//print_dlist(stack_b);
-	//insertion_sort(stack_a, len / 5);
-	//ft_printf("a: ");
 	bubble_sort(stack_a, 1);
-	//print_dlist(*stack_a);
 	while (stack_b && stack_b->val)
-	{
-		// i = 0;
-		// while (i < len / 5)
-		// {
-			//ps_pa(stack_a, &stack_b);
-			//print_dlist(*stack_a);
-			//insertion_sort(stack_a, len);
-			insertion_sort_advanced(stack_a, &stack_b);
-		// 	i++;
-		// }
-		//bubble_sort(stack_a, 1);
-		//print_dlist(*stack_a);
-		// while (i + 1 > 0)
-		// {
-		// 	ps_ra(stack_a);
-		// 	i--;
-		// }
-		//print_dlist(*stack_a);
-	}
+		insertion_sort_advanced(stack_a, &stack_b);
 	while (check_sorted(*stack_a, 1) == 0)
-	{
 		ps_rra(stack_a);
-	}
 }
 
 
