@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 20:52:48 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/23 21:44:59 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 12:10:06 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	insertion_sort(t_dlist **stack_a, int len)
 
 void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b)
 {
+	if ((*stack_b)->next && (*stack_b)->val < (*stack_b)->next->val)
+		ps_sb(stack_b);
 	if ((*stack_b)->val > (*stack_a)->val)
 	{
 		while ((*stack_b)->val > (*stack_a)->val)
