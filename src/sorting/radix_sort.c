@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/24 12:21:14 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 23:40:24 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 23:48:58 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,32 @@ void    rotate_back(t_dlist **stack, int rotate_count, int len, int ab)
     }
 }
 
-// int find_closest(t_dlist *stack_b, int decimal, int i)
+// int find_closest(t_dlist *stack, int decimal, int i)
 // {
+//     int     forward;
+//     int     backward;
+//     t_dlist *tmp;
 
+//     forward = 0;
+//     backward = 1;
+//     tmp = ft_dlstlast(stack);
+//     while (tmp)
+//     {
+//         if (tmp->val / decimal % 10 == i)
+//             break;
+//         tmp = tmp->previous;
+//         backward++;
+//     }
+//     while (stack)
+//     {
+//         if (stack->val / decimal % 10 == i)
+//             break;
+//         stack = stack->next;
+//         forward++;
+//     }
+//     if (forward >= backward)
+//         return (1);
+//     return (0);
 // }
 
 void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
