@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/23 20:50:37 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 11:05:28 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	check_sorted_rotated(t_dlist *stack, int ascending, int len)
 	}
 	if (last > start)
 		return (0);
-	ft_printf("yes! sorted: ");
-	print_dlist(stack);
+	//ft_printf("yes! sorted: ");
+	//print_dlist(stack);
 	return (1);
 }
 
@@ -158,8 +158,8 @@ int	check_sorted_rotated(t_dlist *stack, int ascending, int len)
 int	main(int argc, char**argv)
 {
 	t_dlist	*stack_a;
-	// t_dlist	*tmp1;
 
+	stack_a = NULL;
 	if (argc == 1)
 		return (0);
 	if (parse_input(argc, argv, &stack_a) == 0)
@@ -168,8 +168,8 @@ int	main(int argc, char**argv)
 		system("leaks push_swap");
 		return (write(1, "Error\n", 6));
 	}
-	print_dlist(stack_a);
-	ft_printf("[%d]\n", ft_dlstlen(stack_a));
+	//print_dlist(stack_a);
+	//ft_printf("[%d]\n", ft_dlstlen(stack_a));
 	if (ft_dlstlen(stack_a) <= 6)
 		smallest_sort(&stack_a, 1);
 	else 
@@ -179,7 +179,7 @@ int	main(int argc, char**argv)
 	//quick_sort(&stack_a, 1, ft_dlstlen(stack_a));
 	//stack_a = tmp1;
 	//ft_printf("arriving home:\n");
-	print_dlist(stack_a);
+	//print_dlist(stack_a);
 	//ft_dlstclear(&stack_a);
 	//system("leaks push_swap");
 	return (0);

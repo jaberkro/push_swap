@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 13:52:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/21 15:54:19 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 11:04:31 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	six_sort(t_dlist **stack_a, t_dlist **stack_b, int len, int as)
 		i++;
 	}
 	three_sort(stack_a, as);
-	if (len == 5)
+	if (len == 5 && check_sorted(*stack_b, 0) == 0)
 		ps_sb(stack_b);
 	else if (len == 6)
 		three_sort(stack_b, 0);

@@ -12,110 +12,21 @@
 
 #include "push_swap.h"
 
-// static void	bucket_one_four(t_dlist **stack_a, t_dlist **stack_b, int len)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < len)
-// 	{
-// 		// ft_printf("i:%d\n", i);
-// 		// ft_printf("a: ");
-// 		// print_dlist(*stack_a);
-// 		// ft_printf("b: ");
-// 		// print_dlist(*stack_b);
-// 		while (((*stack_a)->val > 0 && (*stack_a)->val <= len / 5) || \
-// 		((*stack_a)->val > len / 5 * 3 && (*stack_a)->val <= len / 5 * 4))
-// 		{
-// 			if ((*stack_a)->val <= len / 5)
-// 			{
-// 				ps_pb(stack_b, stack_a);
-// 				// if ((*stack_b)->val < ft_dlstlast(*stack_a)->val)
-// 				// {
-// 				// 	ps_rrb(stack_b);
-// 				// 	ps_sb(stack_b);
-// 				// 	ps_rb(stack_b);
-// 				// }
-// 				ps_rb(stack_b);
-// 			}
-// 			else
-// 			{
-// 				ps_pb(stack_b, stack_a);
-// 				// if ((*stack_b)->next && (*stack_b)->val < (*stack_b)->next->val)
-// 				// 	ps_sb(stack_b);
-// 			}
-// 			i++;
-// 			if (i >= len)
-// 				break ;
-// 		}
-// 		ps_ra(stack_a);
-// 		i++;
-// 	}
-// 	return ;
-// }
-
-// static void	bucket_two_three(t_dlist **stack_a, t_dlist **stack_b, int len)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < len)
-// 	{
-// 		// ft_printf("i:%d\n", i);
-// 		// ft_printf("a: ");
-// 		// print_dlist(*stack_a);
-// 		// ft_printf("b: ");
-// 		// print_dlist(*stack_b);
-// 		while ((*stack_a)->val > len / 5 && (*stack_a)->val <= len / 5 * 3)
-// 		{
-// 			if ((*stack_a)->val <= len / 5 * 2)
-// 			{
-// 				ps_pb(stack_b, stack_a);
-// 				// if ((*stack_b)->val < ft_dlstlast(*stack_a)->val)
-// 				// {
-// 				// 	ps_rrb(stack_b);
-// 				// 	ps_sb(stack_b);
-// 				// 	ps_rb(stack_b);
-// 				// }
-// 				ps_rb(stack_b);
-// 			}
-// 			else
-// 			{
-// 				ps_pb(stack_b, stack_a);
-// 				// if ((*stack_b)->next && (*stack_b)->val < (*stack_b)->next->val)
-// 				// 	ps_sb(stack_b);
-// 			}
-// 			i++;
-// 			if (i >= len)
-// 				break ;
-// 		}
-// 		ps_ra(stack_a);
-// 		i++;
-// 	}
-// 	return ;
-// }
-
 void	bucket_next_two(t_dlist **stack_a, t_dlist **stack_b, int len, int part)
 {
 	int	x;
 	int	i;
-	int	l;
-	int h;
-	int	m;
 	
 	i = 0;
+	x = 25;
 	if (len <= 100)
-		x = 7;
-	else 
-		x = 25;
-	l = x / 2 - part - 1;
-	h = x / 2 + part + 1;
-	m = x / 2;
+		x = 5;
 	while (i < len)
 	{
-		while (((*stack_a)->val > len / x * l && (*stack_a)->val <= len / x * h))
+		while (((*stack_a)->val > len / x * ((x - 1)/ 2 - 1 - part) && \
+		(*stack_a)->val <= len / x * ((x - 1)/ 2 + 1 + part)))
 		{
-			if ((*stack_a)->val <= len / x * m)
+			if ((*stack_a)->val <= len / x * (x - 1 / 2))
 			{
 				ps_pb(stack_b, stack_a);
 				ps_rb(stack_b);
@@ -140,7 +51,7 @@ void	bucket_sort(t_dlist **stack_a)
 
 	len = ft_dlstlen(*stack_a);
 	if (len <= 100)
-		amount = 7;
+		amount = 5;
 	else 
 		amount = 25;
 	i = 0;
