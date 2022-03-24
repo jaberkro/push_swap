@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 11:05:28 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 12:43:53 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ int	check_sorted_rotated(t_dlist *stack, int ascending, int len)
 int	main(int argc, char**argv)
 {
 	t_dlist	*stack_a;
+	int		len;
 
 	stack_a = NULL;
 	if (argc == 1)
@@ -170,10 +171,12 @@ int	main(int argc, char**argv)
 	}
 	//print_dlist(stack_a);
 	//ft_printf("[%d]\n", ft_dlstlen(stack_a));
+	len = ft_dlstlen(stack_a);
 	if (ft_dlstlen(stack_a) <= 6)
 		smallest_sort(&stack_a, 1);
 	else 
-		bucket_sort(&stack_a);
+		radix_sort(&stack_a, len);
+		//bucket_sort(&stack_a);
 		//bubble_sort(&stack_a, 1);
 	//ft_printf("bubble sort done. Starting quick sort now\n");
 	//quick_sort(&stack_a, 1, ft_dlstlen(stack_a));
