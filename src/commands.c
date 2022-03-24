@@ -6,57 +6,119 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/05 11:16:37 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/21 19:56:34 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 21:57:33 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	write_command_to_terminal(char *command)
+{
+	static char last_command[4];
+
+	//ft_printf("incoming command: %s. last command saved: %s\n", command, last_command);
+	if (command[0] == 'e')//ft_strncmp(command, "end", 3) == 0)
+	{
+		ft_printf("%s\n", last_command);
+	}
+	else if (last_command[0] == '\0')
+	{
+		//f//t_printf("start!");
+		last_command[0] = command[0];
+		last_command[1] = command[1];
+		last_command[2] = command[2];
+	}
+	else if ((ft_strncmp(command, "ra", 2) == 0 && ft_strncmp(last_command, "rb", 2) == 0) || \
+		(ft_strncmp(command, "rb", 2) == 0 && ft_strncmp(last_command, "ra", 2) == 0))
+	{
+		ft_printf("rr\n");
+		last_command[0] = 'r';
+		last_command[1] = 'r';
+		last_command[2] = '\0';
+	}
+	else if ((ft_strncmp(command, "rra", 3) == 0 && ft_strncmp(last_command, "rrb", 3) == 0) || \
+		(ft_strncmp(command, "rrb", 3) == 0 && ft_strncmp(last_command, "rra", 3) == 0))
+	{
+		ft_printf("rrr\n");
+		last_command[0] = 'r';
+		last_command[1] = 'r';
+		last_command[2] = 'r';
+		last_command[3] = '\0';
+	}
+	else if ((ft_strncmp(command, "sa", 2) == 0 && ft_strncmp(last_command, "sb", 2) == 0) || \
+		(ft_strncmp(command, "sb", 2) == 0 && ft_strncmp(last_command, "sa", 2) == 0))
+	{
+		ft_printf("ss\n");
+		last_command[0] = 's';
+		last_command[1] = 's';
+		last_command[2] = '\0';
+	}
+	else if ((ft_strncmp(command, "ra", 2) == 0 && ft_strncmp(last_command, "rra", 3) == 0) || \
+		(ft_strncmp(command, "rra", 3) == 0 && ft_strncmp(last_command, "ra", 2) == 0) || \
+		(ft_strncmp(command, "rrb", 3) == 0 && ft_strncmp(last_command, "rb", 2) == 0) || \
+		(ft_strncmp(command, "rb", 2) == 0 && ft_strncmp(last_command, "rrb", 3) == 0))
+	{
+		last_command[0] = '\0';
+		last_command[1] = '\0';
+		last_command[2] = '\0';
+	}
+	else
+	{
+		ft_printf("%s\n", last_command);
+		last_command[0] = command[0];
+		last_command[1] = command[1];
+		last_command[2] = command[2];
+	}
+	// if (ft_strncmp(command, "ra", 2) == 0)
+	// 	ft_printf("here comes ra\n");
+	// ft_printf("%s\n", last_command);
+}
+
 void	ps_sa(t_dlist **stack)
 {
-	ft_printf("sa\n");
+	write_command_to_terminal("sa");
 	ft_dlstswap(stack);
 }
 
 void	ps_sb(t_dlist **stack)
 {
-	ft_printf("sb\n");
+	write_command_to_terminal("sb");
 	ft_dlstswap(stack);
 }
 
 void	ps_ra(t_dlist **stack)
 {
-	ft_printf("ra\n");
+	write_command_to_terminal("ra");
 	ft_dlstrotate(stack);
 }
 
 void	ps_rb(t_dlist **stack)
 {
-	ft_printf("rb\n");
+	write_command_to_terminal("rb");
 	ft_dlstrotate(stack);
 }
 
 void	ps_rra(t_dlist **stack)
 {
-	ft_printf("rra\n");
+	write_command_to_terminal("rra");
 	ft_dlstrev_rotate(stack);
 }
 
 void	ps_rrb(t_dlist **stack)
 {
-	ft_printf("rrb\n");
+	write_command_to_terminal("rrb");
 	ft_dlstrev_rotate(stack);
 }
 
 void	ps_pb(t_dlist **stack_b, t_dlist **stack_a)
 {
-	ft_printf("pb\n");
+	write_command_to_terminal("pb");
 	ft_dlstpush(stack_b, stack_a);
 }
 
 void	ps_pa(t_dlist **stack_a, t_dlist **stack_b)
 {
-	ft_printf("pa\n");
+	write_command_to_terminal("pa");
 	ft_dlstpush(stack_a, stack_b);
 }
 

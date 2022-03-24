@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/23 20:00:51 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 21:31:14 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ t_dlist	*quick_sort(t_dlist **stack_a, int start, int end);
 void	smallest_sort(t_dlist **stack_a, int ascending);
 void	bucket_sort(t_dlist **stack_a);
 void	insertion_sort(t_dlist **stack_a, int len);
-
+void    radix_sort(t_dlist **stack_a, int total);
+void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b);
 
 void	ps_sa(t_dlist **stack);
 void	ps_sb(t_dlist **stack);
@@ -55,5 +56,7 @@ void	ps_rra(t_dlist **stack);
 void	ps_rrb(t_dlist **stack);
 void	ps_pb(t_dlist **stack_b, t_dlist **stack_a);
 void	ps_pa(t_dlist **stack_a, t_dlist **stack_b);
+
+void	write_command_to_terminal(char *command);
 
 #endif
