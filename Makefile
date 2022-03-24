@@ -6,12 +6,12 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/03/21 21:24:11 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/03/24 10:57:36 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -O3 #-fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -O3 -fsanitize=address -g
 INC = -I ./include
 
 LIBFT_DIR = libft/
