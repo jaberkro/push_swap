@@ -39,12 +39,14 @@ t_dlist	*ft_dlstlast(t_dlist *dlst);
 void	print_dlist(t_dlist *to_print);
 int	check_sorted(t_dlist *stack, int ascending);
 int	check_sorted_part(t_dlist *stack, int ascending, int len);
+int	check_sorted_rotated(t_dlist *stack, int ascending, int len);
 
 void	bubble_sort(t_dlist **stack_a, int ascending);
 t_dlist	*quick_sort(t_dlist **stack_a, int start, int end);
 void	smallest_sort(t_dlist **stack_a, int ascending);
 void	bucket_sort(t_dlist **stack_a);
 void	insertion_sort(t_dlist **stack_a, int len);
+
 void    radix_sort(t_dlist **stack_a, int total);
 void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b);
 
@@ -56,6 +58,7 @@ void	ps_rra(t_dlist **stack);
 void	ps_rrb(t_dlist **stack);
 void	ps_pb(t_dlist **stack_b, t_dlist **stack_a);
 void	ps_pa(t_dlist **stack_a, t_dlist **stack_b);
+
 
 void	write_command_to_terminal(char *command);
 

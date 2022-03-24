@@ -80,43 +80,43 @@ void	ps_sa(t_dlist **stack)
 	ft_dlstswap(stack);
 }
 
-void	ps_sb(t_dlist **stack)
+void	ps_sb(t_dlist **stack, char *last_move)
 {
 	write_command_to_terminal("sb");
 	ft_dlstswap(stack);
 }
 
-void	ps_ra(t_dlist **stack)
+void	ps_ra(t_dlist **stack, char *last_move)
 {
 	write_command_to_terminal("ra");
 	ft_dlstrotate(stack);
 }
 
-void	ps_rb(t_dlist **stack)
+void	ps_rb(t_dlist **stack, char *last_move)
 {
 	write_command_to_terminal("rb");
 	ft_dlstrotate(stack);
 }
 
-void	ps_rra(t_dlist **stack)
+void	ps_rra(t_dlist **stack, char *last_move)
 {
 	write_command_to_terminal("rra");
 	ft_dlstrev_rotate(stack);
 }
 
-void	ps_rrb(t_dlist **stack)
+void	ps_rrb(t_dlist **stack, char *last_move)
 {
 	write_command_to_terminal("rrb");
 	ft_dlstrev_rotate(stack);
 }
 
-void	ps_pb(t_dlist **stack_b, t_dlist **stack_a)
+void	ps_pb(t_dlist **stack_b, t_dlist **stack_a, char *last_move)
 {
 	write_command_to_terminal("pb");
 	ft_dlstpush(stack_b, stack_a);
 }
 
-void	ps_pa(t_dlist **stack_a, t_dlist **stack_b)
+void	ps_pa(t_dlist **stack_a, t_dlist **stack_b, char *last_move)
 {
 	write_command_to_terminal("pa");
 	ft_dlstpush(stack_a, stack_b);
