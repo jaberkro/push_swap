@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/24 12:21:14 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 21:52:44 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 23:40:24 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ int present(t_dlist *stack, int decimal, int tofind)
     return (0);
 }
 
-void    rotate_back(t_dlist **stack, int rotate_count, int len, int ab, char *last_command)
+void    rotate_back(t_dlist **stack, int rotate_count, int len, int ab)
 {
     if (rotate_count > len / 2)
     {
         while (rotate_count < len)
         {
             if (ab == 0)
-                ps_ra(stack, last_command);
+                ps_ra(stack);
             else
-                ps_rb(stack, last_command);
+                ps_rb(stack);
             rotate_count++;
         }
     }
@@ -41,15 +41,20 @@ void    rotate_back(t_dlist **stack, int rotate_count, int len, int ab, char *la
         while (rotate_count > 0)
         {
             if (ab == 0)
-                ps_rra(stack, last_command);
+                ps_rra(stack);
             else
-                ps_rrb(stack, last_command);
+                ps_rrb(stack);
             rotate_count--;
         }
     }
 }
 
-void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char *last_command)
+// int find_closest(t_dlist *stack_b, int decimal, int i)
+// {
+
+// }
+
+void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
 {
     int i;
     int j;
@@ -66,14 +71,14 @@ void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char 
         {
             if (present(*stack_a, decimal, i) == 0 && rotate_count > 0)
             {
-                rotate_back(stack_a, rotate_count, ft_dlstlen(*stack_a), 0, last_command);
+                rotate_back(stack_a, rotate_count, ft_dlstlen(*stack_a), 0);
                 break;
             }
             if (*stack_a && (((*stack_a)->val) / decimal) % 10 == i)
-                ps_pb(stack_b, stack_a, last_command);
+                ps_pb(stack_b, stack_a);
             else if (*stack_a)
             {
-                ps_ra(stack_a, last_command);
+                ps_ra(stack_a);
                 rotate_count++;
             }
             j++;
@@ -82,12 +87,13 @@ void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char 
     }
 }
 
-void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char *last_command)
+void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
 {
     int i;
     int j;
     int len;
     int rotate_count;
+    //int direction;
 
     i = 9;
     while (i >= 0)
@@ -97,16 +103,17 @@ void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char *
         j = 0;
         while (j < len)
         {
-            if (present(*stack_b, decimal, i) == 0  && rotate_count > 0)
+            //direction = find_closest(*stack_b, decimal, i);
+            if (present(*stack_b, decimal, i) == 0 && rotate_count > 0)
             {
-                rotate_back(stack_b, rotate_count, ft_dlstlen(*stack_b), 1, last_command);
+                rotate_back(stack_b, rotate_count, ft_dlstlen(*stack_b), 1);
                 break;
             }
             if (*stack_b && (((*stack_b)->val) / decimal) % 10 == i)
-                ps_pa(stack_a, stack_b, last_command);
+                ps_pa(stack_a, stack_b);
             else if (*stack_b)
             {
-                ps_rb(stack_b, last_command);
+                ps_rb(stack_b);
                 rotate_count++;
             }
             j++;
@@ -118,26 +125,17 @@ void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal, char *
 void    radix_sort(t_dlist **stack_a, int total)
 {
     int     decimal;
-    char    last_command[4];
     t_dlist *stack_b;
 
     decimal = 1;
     stack_b = NULL;
-    last_command[0] = '0';
-    last_command[1] = '0';
-    last_command[2] = '0';
-    last_command[3] = '0';
     while (decimal <= total)
     {
         if (*stack_a && check_sorted(*stack_a, 1) == 1)
             return ;
-        sort_descending(stack_a, &stack_b, decimal, last_command);
+        sort_descending(stack_a, &stack_b, decimal);
         decimal *= 10;
-        sort_ascending(stack_a, &stack_b, decimal, last_command);
+        sort_ascending(stack_a, &stack_b, decimal);
         decimal *= 10;
     }
-    if (last_command[0] != '0' && last_command[1] == 'r' && last_command[2] != '0')
-		ft_printf("%c%c%c\n", last_command[0], last_command[1], last_command[2]);
-	else if (last_command[0] != '0')
-		ft_printf("%c%c\n", last_command[0], last_command[1]);
 }

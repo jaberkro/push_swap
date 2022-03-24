@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 21:31:14 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/24 22:11:22 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ps_rra(t_dlist **stack);
 void	ps_rrb(t_dlist **stack);
 void	ps_pb(t_dlist **stack_b, t_dlist **stack_a);
 void	ps_pa(t_dlist **stack_a, t_dlist **stack_b);
-
 
 void	write_command_to_terminal(char *command);
 
