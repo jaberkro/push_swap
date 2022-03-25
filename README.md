@@ -8,4 +8,5 @@ make
 
 # how to use:
 ./push_swap "2 3 4 0 -5"
+
 ./push_swap 500 3 245 -234 -5678
