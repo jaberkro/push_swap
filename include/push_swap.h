@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 11:15:19 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 12:16:04 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int		ft_dlstindex_lowest(t_dlist **dlst, int value);
 t_dlist	*ft_dlstlast(t_dlist *dlst);
 
 void	print_dlist(t_dlist *to_print);
-int	check_sorted(t_dlist *stack, int ascending);
-int	check_sorted_part(t_dlist *stack, int ascending, int len);
-int	check_sorted_rotated(t_dlist *stack, int ascending, int len);
+int		check_sorted(t_dlist *stack, int ascending);
+int		check_sorted_part(t_dlist *stack, int ascending, int len);
 
 void	bubble_sort(t_dlist **stack_a, int ascending);
 t_dlist	*quick_sort(t_dlist **stack_a, int start, int end);
@@ -47,9 +46,10 @@ void	smallest_sort(t_dlist **stack_a, int ascending);
 void	bucket_sort(t_dlist **stack_a);
 void	insertion_sort(t_dlist **stack_a, int len);
 
-void    radix_sort(t_dlist **stack_a, int total);
+void	radix_sort(t_dlist **stack_a, int total);
 void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b);
-void radix_sort_bitwise(t_dlist **stack_a);
+void	radix_sort_bitwise(t_dlist **stack_a);
+int		parse_input(int argc, char **argv, t_dlist **stack_a);
 
 void	ps_sa(t_dlist **stack);
 void	ps_sb(t_dlist **stack);
@@ -60,6 +60,7 @@ void	ps_rrb(t_dlist **stack);
 void	ps_pb(t_dlist **stack_b, t_dlist **stack_a);
 void	ps_pa(t_dlist **stack_a, t_dlist **stack_b);
 
+int		check_swap_double_command(char *old, char *new);
 void	write_command_to_terminal(char *command);
 
 #endif
