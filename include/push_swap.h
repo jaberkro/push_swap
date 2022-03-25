@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:48:28 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 16:09:50 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,10 @@ void	rotate_back(t_dlist **stack, int rotate_count, int len, int ab);
 void	write_command_to_terminal(char *command);
 
 void	radix_sort_bitwise(t_dlist **stack_a);
-void	smallest_sort(t_dlist **stack_a, int ascending);
+void	radix_sort_decimal(t_dlist **stack_a, int total);
+void	smallest_sort(t_dlist **stack_a);
 void	bubble_sort(t_dlist **stack_a, int ascending);
-void	insertion_sort(t_dlist **stack_a, int len);
-void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b);
+void	insertion_sort(t_dlist **stack_a, t_dlist **stack_b);
 void	bucket_sort(t_dlist **stack_a);
-void	radix_sort(t_dlist **stack_a, int total);
 
 #endif
