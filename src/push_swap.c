@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 22:36:52 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 11:17:57 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,8 @@ int	main(int argc, char**argv)
 	if (ft_dlstlen(stack_a) <= 6)
 		smallest_sort(&stack_a, 1);
 	else
-		radix_sort(&stack_a, len);
+		radix_sort_bitwise(&stack_a);
+		//radix_sort(&stack_a, len);
 		//bucket_sort(&stack_a);
 	write_command_to_terminal("end");
 		//bubble_sort(&stack_a, 1);
@@ -183,7 +184,7 @@ int	main(int argc, char**argv)
 	//quick_sort(&stack_a, 1, ft_dlstlen(stack_a));
 	//stack_a = tmp1;
 	//ft_printf("arriving home:\n");
-	print_dlist(stack_a);
+	//print_dlist(stack_a);
 	//ft_dlstclear(&stack_a);
 	//system("leaks push_swap");
 	return (0);

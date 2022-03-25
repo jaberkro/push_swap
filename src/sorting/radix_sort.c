@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/24 12:21:14 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 23:48:58 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 10:57:25 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,33 +49,35 @@ void    rotate_back(t_dlist **stack, int rotate_count, int len, int ab)
     }
 }
 
-// int find_closest(t_dlist *stack, int decimal, int i)
-// {
-//     int     forward;
-//     int     backward;
-//     t_dlist *tmp;
+int find_closest(t_dlist *stack, int decimal, int i)
+{
+    int     forward;
+    int     backward;
+    t_dlist *tmp;
 
-//     forward = 0;
-//     backward = 1;
-//     tmp = ft_dlstlast(stack);
-//     while (tmp)
-//     {
-//         if (tmp->val / decimal % 10 == i)
-//             break;
-//         tmp = tmp->previous;
-//         backward++;
-//     }
-//     while (stack)
-//     {
-//         if (stack->val / decimal % 10 == i)
-//             break;
-//         stack = stack->next;
-//         forward++;
-//     }
-//     if (forward >= backward)
-//         return (1);
-//     return (0);
-// }
+    forward = 0;
+    backward = 1;
+    tmp = ft_dlstlast(stack);
+    if (present(stack, decimal, i) == 0)
+        return (1000);
+    while (tmp)
+    {
+        if (tmp->val / decimal % 10 == i)
+            break;
+        tmp = tmp->previous;
+        backward++;
+    }
+    while (stack)
+    {
+        if (stack->val / decimal % 10 == i)
+            break;
+        stack = stack->next;
+        forward++;
+    }
+    if (forward < backward)
+        return (forward);
+    return (backward);
+}
 
 void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
 {
@@ -116,7 +118,6 @@ void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
     int j;
     int len;
     int rotate_count;
-    //int direction;
 
     i = 9;
     while (i >= 0)
@@ -126,7 +127,6 @@ void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
         j = 0;
         while (j < len)
         {
-            //direction = find_closest(*stack_b, decimal, i);
             if (present(*stack_b, decimal, i) == 0 && rotate_count > 0)
             {
                 rotate_back(stack_b, rotate_count, ft_dlstlen(*stack_b), 1);
@@ -144,6 +144,67 @@ void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
         i--;
     }
 }
+
+// void    sort_ascending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
+// {
+//     int i;
+//     int closest;
+
+//     i = 9;
+//     while (i >= 0)
+//     {
+//         closest = find_closest(*stack_b, decimal, i);
+//         if (closest == 1000)
+//             continue ;
+//         else
+//         {
+//             while (closest > 0)
+//             {
+//                 ps_rb(stack_b);
+//             }
+//             while (closest < 0)
+//             {
+//                 ps_rrb(stack_b);
+//             }
+//         }
+//         ps_pa(stack_a, stack_b);
+//         i--;
+//     }
+// }
+
+// void    sort_descending(t_dlist **stack_a, t_dlist **stack_b, int decimal)
+// {
+//     int i;
+//     int closest;
+
+//     i = 0;
+//     while (i < 10)
+//     {
+//         closest = find_closest(*stack_a, decimal, i);
+//         if (closest == 1000)
+//             continue ;
+//         else
+//         {
+//             while (closest > 0)
+//             {
+//                 ps_ra(stack_a);
+//                 closest--;
+//             }
+//             while (closest < 0)
+//             {
+//                 ps_rra(stack_a);
+//                 closest++;
+//             }
+//         }
+//         ps_pb(stack_b, stack_a);
+//         i++;
+//     }
+// }
+
+// void    sort(t_dlist **stack_to, t_dlist **stack_from, int ascending, int decimal)
+// {
+
+// }
 
 void    radix_sort(t_dlist **stack_a, int total)
 {

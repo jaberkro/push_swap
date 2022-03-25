@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/24 12:23:38 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/24 22:11:22 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 11:15:19 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	insertion_sort(t_dlist **stack_a, int len);
 
 void    radix_sort(t_dlist **stack_a, int total);
 void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b);
+void radix_sort_bitwise(t_dlist **stack_a);
 
 void	ps_sa(t_dlist **stack);
 void	ps_sb(t_dlist **stack);
