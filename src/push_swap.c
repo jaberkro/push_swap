@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 11:34:41 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 13:09:36 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,5 @@ int	main(int argc, char**argv)
 	write_command_to_terminal("end");
 	return (0);
 }
+
+/* Function print_dlist is for debugging purposes */

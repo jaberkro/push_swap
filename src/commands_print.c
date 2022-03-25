@@ -6,20 +6,20 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/25 11:38:02 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:08:39 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 13:52:15 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	overwrite_old(char *last_command, char a, char b, char c)
+static void	overwrite_old(char *last_command, char a, char b, char c)
 {
 	last_command[0] = a;
 	last_command[1] = b;
 	last_command[2] = c;
 }
 
-int	check_rotate_double_command(char *old, char *new)
+static static int	check_rotate_double_command(char *old, char *new)
 {
 	if ((ft_strncmp(new, "ra", 2) == 0 && ft_strncmp(old, "rb", 2) == 0) || \
 		(ft_strncmp(new, "rb", 2) == 0 && ft_strncmp(old, "ra", 2) == 0))
@@ -27,7 +27,7 @@ int	check_rotate_double_command(char *old, char *new)
 	return (0);
 }
 
-int	check_reverse_rotate_double_command(char *old, char *new)
+static int	check_reverse_rotate_double_command(char *old, char *new)
 {
 	if ((ft_strncmp(new, "rra", 3) == 0 && ft_strncmp(old, "rrb", 3) == 0) || \
 		(ft_strncmp(new, "rrb", 3) == 0 && ft_strncmp(old, "rra", 3) == 0))
@@ -35,7 +35,7 @@ int	check_reverse_rotate_double_command(char *old, char *new)
 	return (0);
 }
 
-int	check_rotate_push_forward_backward(char *old, char *new)
+static int	check_rotate_push_forward_backward(char *old, char *new)
 {
 	if ((ft_strncmp(new, "ra", 2) == 0 && ft_strncmp(old, "rra", 3) == 0) || \
 		(ft_strncmp(new, "rra", 3) == 0 && ft_strncmp(old, "ra", 2) == 0) || \
