@@ -1,7 +1,7 @@
 # push_swap
 A dive into sorting algorithms
 
-This program will print out the needed commands to sort the input. It will not give back the sorted stack.
+This program will print out the needed commands to sort the input using 2 stacks and a given set of allowed commands. It will not give back the sorted stack.
 
 # how to make:
 make
