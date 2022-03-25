@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:09:36 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 16:23:57 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,18 @@ int	main(int argc, char**argv)
 		return (write(1, "Error\n", 6));
 	}
 	len = ft_dlstlen(stack_a);
-	if (ft_dlstlen(stack_a) <= 6)
-		smallest_sort(&stack_a, 1);
+	if (len <= 6)
+		smallest_sort(&stack_a);
 	else
 		radix_sort_bitwise(&stack_a);
 	write_command_to_terminal("end");
 	return (0);
 }
 
-/* Function print_dlist is for debugging purposes */
+/* In case you want to try other sorting algorithms: 
+	change radix_sort_bitwise(&stack_a); into one of these:
+		bubble_sort(&stack_a, 1); 			// 100: 9000-12000	500: +290000
+		bucket_sort(&stack_a); 				// 100: 900-1200 	500: +19000
+		radix_sort_decimal(&stack_a, 4);	// 100: 1101 		500: KO
+		radix_sort_bitwise(&stack_a);		// 100: 1063-1073	500: 6754-6764
+	Function print_dlist is for debugging purposes */

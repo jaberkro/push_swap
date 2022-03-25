@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/25 11:38:02 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:52:15 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 16:12:23 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	overwrite_old(char *last_command, char a, char b, char c)
 	last_command[2] = c;
 }
 
-static static int	check_rotate_double_command(char *old, char *new)
+static int	check_rotate_double_command(char *old, char *new)
 {
 	if ((ft_strncmp(new, "ra", 2) == 0 && ft_strncmp(old, "rb", 2) == 0) || \
 		(ft_strncmp(new, "rb", 2) == 0 && ft_strncmp(old, "ra", 2) == 0))
@@ -56,17 +56,17 @@ void	write_command_to_terminal(char *command)
 	else if (check_rotate_double_command(last_command, command) == 1)
 	{
 		ft_printf("rr\n");
-		overwrite_old(last_command, 'r', 'r', '\0');
+		overwrite_old(last_command, '\0', '\0', '\0');
 	}
 	else if (check_reverse_rotate_double_command(last_command, command) == 1)
 	{
 		ft_printf("rrr\n");
-		overwrite_old(last_command, 'r', 'r', 'r');
+		overwrite_old(last_command, '\0', '\0', '\0');
 	}
 	else if (check_swap_double_command(last_command, command) == 1)
 	{
 		ft_printf("ss\n");
-		overwrite_old(last_command, 's', 's', '\0');
+		overwrite_old(last_command, '\0', '\0', '\0');
 	}
 	else
 	{
