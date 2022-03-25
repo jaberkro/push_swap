@@ -6,12 +6,11 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 13:10:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:05:07 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 13:21:30 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	bubble_sort(t_dlist **stack_a, int ascending)
 {

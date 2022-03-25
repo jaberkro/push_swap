@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 20:52:48 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 13:05:59 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/25 13:45:08 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,6 @@ void	insertion_sort_advanced(t_dlist **stack_a, t_dlist **stack_b)
 	return ;
 }
 
-// void	insertion_sort(t_dlist **stack_a, int len)
-// {
-// 	int	i;
-
-//     i = 0;
-//     len += 0;
-// 	while (check_sorted(*stack_a, 1) == 0)
-// 	{
-//         while ((*stack_a)->next && (*stack_a)->val > (*stack_a)->next->val)
-//         {
-//             ps_sa(stack_a);
-//             if (check_sorted(*stack_a, 1) == 1)
-//                 break ;
-//             ps_ra(stack_a);
-//             i++;
-//         }
-//         if (check_sorted(*stack_a, 1) == 1)
-//             break ;
-//         ps_ra(stack_a);
-//         i++;
-// 	}
-//     while (i > 0)
-//     {
-//         ps_rra(stack_a);
-//         i--;
-//     }
-// 	return ;
-// }
+/*  insertion_sort finds the correct spot for the first element in the list.
+    insertion_sort_advanced first rotates the stack to the right spot 
+    before it inserts the element to the list (from the other stack) */
