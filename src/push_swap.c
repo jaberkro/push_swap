@@ -6,7 +6,7 @@
 /*   By: jaberkro <jaberkro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/14 15:30:51 by jaberkro      #+#    #+#                 */
-/*   Updated: 2022/03/25 16:23:57 by jaberkro      ########   odam.nl         */
+/*   Updated: 2022/03/29 17:45:06 by jaberkro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int argc, char**argv)
 	if (parse_input(argc, argv, &stack_a) == 0)
 	{
 		ft_dlstclear(&stack_a);
-		system("leaks push_swap");
 		return (write(1, "Error\n", 6));
 	}
 	len = ft_dlstlen(stack_a);
