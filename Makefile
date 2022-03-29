@@ -6,7 +6,7 @@
 #    By: jaberkro <jaberkro@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/14 15:12:40 by jaberkro      #+#    #+#                  #
-#    Updated: 2022/03/29 19:34:37 by jaberkro      ########   odam.nl          #
+#    Updated: 2022/03/29 22:40:11 by jaberkro      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC = src/commands_print.c src/commands_push_swap.c src/commands_rotate.c \
 	src/extra_sort_algorithms/insertion_sort.c \
 	src/extra_sort_algorithms/radix_sort_decimal.c
 
-OBJ = $(subst $(SRC_DIR),$(BUILD_DIR), ${SRC:.c=.o})
+OBJ = $(subst $(SRC_DIR), $(BUILD_DIR), $(SRC:.c=.o))
 
 # COLORS
 PINK	= \x1b[35m
